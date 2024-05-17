@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from '../hotel';
 import { HotelService } from '../hotel.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-hotel',
@@ -18,13 +19,12 @@ export class CreateHotelComponent implements OnInit {
 
   hotels: Hotel[] = [];
   roomCounter: number = 0;
-  constructor(private hotelService: HotelService) { }
+  constructor(private hotelService: HotelService, private router: Router ) { }
 
   ngOnInit():void {
 
   }
   addRoom() {
-    // Agregar una nueva habitación al hotel
     this.roomCounter++;
 
     this.newHotel.rooms.push({
@@ -42,12 +42,16 @@ export class CreateHotelComponent implements OnInit {
       .subscribe(newHotel => {
         console.log('Nuevo hotel agregado:', newHotel);     
         this.loadHotels();
+        this.router.navigate(['/manageHotels']);
       });
   }
   loadHotels() {
     this.hotelService.getHotels().subscribe(hotels => {
       this.hotels = hotels;
     });
+  }
+  onCancel() {
+    this.router.navigate(['/manageHotels']);
   }
   
 }

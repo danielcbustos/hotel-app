@@ -1,18 +1,30 @@
 <div class="container">
   <h2 class="mt-5 mb-4">Gestión de Hoteles</h2>
+  <div class="mb-3">
+    <button class="btn btn-primary" (click)="navigateToCreateHotel()">
+      Crear Hotel
+    </button>
+  </div>
+
   <div *ngIf="hotels.length > 0; else noHotelsMessage">
     <div class="list-group">
       <div *ngFor="let hotel of hotels" class="list-group-item">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">{{ hotel.name }}</h5>
           <small>{{ hotel.isEnable ? "Habilitado" : "Deshabilitado" }}</small>
+          <div class="mt-2">
+            <a
+              [routerLink]="['/edit-hotel', hotel.id]"
+              class="btn btn-sm btn-primary me-2"
+              >Editar</a
+            >
+            <!-- <button (click)="toggleEnable(hotel)" class="btn btn-sm" [ngClass]="hotel.isEnable ? 'btn-danger' : 'btn-success'">
+              {{ hotel.isEnable ? 'Deshabilitar' : 'Habilitar' }}
+            </button> -->
+          </div>
         </div>
         <p class="mb-1">{{ hotel.description }}</p>
         <small>Habitaciones: {{ hotel.rooms.length }}</small>
-        <!-- <button class="btn btn-sm btn-primary" (click)="toggleHotelEnableStatus(hotel)">
-          {{ hotel.isEnable ? 'Deshabilitar' : 'Habilitar' }}
-        </button> -->
-        <!-- Add more buttons for editing/deleting hotels if needed -->
       </div>
     </div>
   </div>

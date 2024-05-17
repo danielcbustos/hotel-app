@@ -49,6 +49,18 @@ addHotel(newHotel: Hotel): Observable<Hotel> {
     catchError(this.handleError<Hotel>('addHotel'))
   );
 }
+updateHotel(updatedHotel: Hotel): Observable<Hotel> {
+  const index = this.hotels.findIndex(hotel => hotel.id === updatedHotel.id);
+  if (index !== -1) {
+    this.hotels[index] = updatedHotel;
+    localStorage.setItem(this.localStorageKey, JSON.stringify(this.hotels));
+  }
+  return of(updatedHotel).pipe(
+    tap(_ => console.log('Hotel updated in the service')),
+    catchError(this.handleError<Hotel>('updateHotel'))
+  );
+}
+
 private retrieveHotelsFromLocalStorage(): Hotel[] {
   const hotelsData = localStorage.getItem(this.localStorageKey);
   return hotelsData ? JSON.parse(hotelsData) : [];

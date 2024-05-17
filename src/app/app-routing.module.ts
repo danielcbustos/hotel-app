@@ -4,14 +4,16 @@ import { CreateHotelComponent } from './hotel/create-hotel/create-hotel.componen
 import { ListReservationComponent } from './hotel/list-reservation/list-reservation.component';
 
 import { ManageHotelsComponent } from './hotel/manage-hotels/manage-hotels.component';
+import { EditHotelComponent } from './hotel/edit-hotel/edit-hotel.component';
 
 const routes: Routes = [
   { path: 'createHotel', component: CreateHotelComponent, pathMatch: 'full' },
   { path: 'listReservation', component: ListReservationComponent, pathMatch: 'full' },
   { path: 'manageHotels', component: ManageHotelsComponent, pathMatch: 'full' },
+  { path: 'editHotel', component: EditHotelComponent, pathMatch: 'full' },
   
 
-  { path: '**', redirectTo: 'createHotel' }
+  { path: '**', redirectTo: 'manageHotels' }
 ];
 
 

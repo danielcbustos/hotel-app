@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelService } from '../hotel.service';
 import { Hotel } from '../hotel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-hotels',
@@ -10,7 +11,7 @@ import { Hotel } from '../hotel';
 export class ManageHotelsComponent implements OnInit {
 
   hotels: Hotel[] = [];
-  constructor(private hotelService: HotelService) { }
+  constructor(private hotelService: HotelService, private router:Router) { }
 
   ngOnInit():void {
     this.loadHotels();
@@ -20,6 +21,8 @@ export class ManageHotelsComponent implements OnInit {
       this.hotels = hotels;
     });
   }
-
+  navigateToCreateHotel(): void {
+    this.router.navigate(['/createHotel']);
+  }
 
 }

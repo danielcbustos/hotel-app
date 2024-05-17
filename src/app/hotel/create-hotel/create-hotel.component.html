@@ -33,7 +33,6 @@
       <label class="form-check-label" for="isEnable">Habilitado</label>
     </div>
 
-    <!-- Sección para ingresar las habitaciones del hotel -->
     <div class="mb-3" *ngFor="let room of newHotel.rooms; let i = index">
       <h3 class="mb-2">Habitación {{ i + 1 }}</h3>
       <div class="row">
@@ -97,7 +96,12 @@
           Agregar Habitación
         </button>
       </div>
-      <div class="col-auto">
+    </div>
+    <div class="row mt-3">
+      <div class="col text-center">
+        <button type="button" class="btn btn-primary me-2" (click)="onCancel()">
+          Cancelar
+        </button>
         <button type="submit" class="btn btn-primary">Crear Hotel</button>
       </div>
     </div>

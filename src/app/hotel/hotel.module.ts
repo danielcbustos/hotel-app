@@ -5,6 +5,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ListReservationComponent } from './list-reservation/list-reservation.component';
 import { FormsModule } from '@angular/forms';
 import { ManageHotelsComponent } from './manage-hotels/manage-hotels.component';
+import { EditHotelComponent } from './edit-hotel/edit-hotel.component';
 
 
 
@@ -14,7 +15,7 @@ import { ManageHotelsComponent } from './manage-hotels/manage-hotels.component';
     AppRoutingModule, 
     FormsModule
   ],
-  exports:[CreateHotelComponent,ListReservationComponent,ManageHotelsComponent],
-  declarations: [CreateHotelComponent,ListReservationComponent,ManageHotelsComponent]
+  exports:[CreateHotelComponent,ListReservationComponent,ManageHotelsComponent,EditHotelComponent],
+  declarations: [CreateHotelComponent,ListReservationComponent,ManageHotelsComponent,EditHotelComponent]
 })
 export class HotelModule { }
