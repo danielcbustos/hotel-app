@@ -1,0 +1,105 @@
+<div class="container">
+  <h2 class="mt-5 mb-4">Crear Nuevo Hotel</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        [(ngModel)]="newHotel.name"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción:</label>
+      <textarea
+        class="form-control"
+        id="description"
+        name="description"
+        [(ngModel)]="newHotel.description"
+        required
+      ></textarea>
+    </div>
+    <div class="mb-3 form-check">
+      <input
+        type="checkbox"
+        class="form-check-input"
+        id="isEnable"
+        name="isEnable"
+        [(ngModel)]="newHotel.isEnable"
+      />
+      <label class="form-check-label" for="isEnable">Habilitado</label>
+    </div>
+
+    <!-- Sección para ingresar las habitaciones del hotel -->
+    <div class="mb-3" *ngFor="let room of newHotel.rooms; let i = index">
+      <h3 class="mb-2">Habitación {{ i + 1 }}</h3>
+      <div class="row">
+        <div class="col-md-3">
+          <label for="roomNumber{{ i }}" class="form-label"
+            >Número de Habitación:</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="roomNumber{{ i }}"
+            name="roomNumber{{ i }}"
+            [(ngModel)]="room.number"
+            required
+          />
+        </div>
+        <div class="col-md-3">
+          <label for="roomType{{ i }}" class="form-label"
+            >Tipo de Habitación:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="roomType{{ i }}"
+            name="roomType{{ i }}"
+            [(ngModel)]="room.type"
+            required
+          />
+        </div>
+        <div class="col-md-3">
+          <label for="roomPrice{{ i }}" class="form-label"
+            >Precio de Habitación:</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="roomPrice{{ i }}"
+            name="roomPrice{{ i }}"
+            [(ngModel)]="room.price"
+            required
+          />
+        </div>
+        <div class="col-md-3">
+          <label for="isRoomAvailable{{ i }}" class="form-check-label"
+            >Habitación Disponible</label
+          >
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="isRoomAvailable{{ i }}"
+            name="isRoomAvailable{{ i }}"
+            [(ngModel)]="room.isAvailable"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-auto">
+        <button type="button" class="btn btn-primary" (click)="addRoom()">
+          Agregar Habitación
+        </button>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">Crear Hotel</button>
+      </div>
+    </div>
+  </form>
+</div>
